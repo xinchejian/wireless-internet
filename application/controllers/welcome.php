@@ -44,8 +44,42 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome_message');
+    $this->load->helper(array('form', 'url'));
+
+		$this->load->library('form_validation');
+
+    $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[32]|xss_clean');
+    $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passconf]');
+    $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required');
+    $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->load->view('landing');
+		}
+		else
+		{
+      /* select the data, update where needed
+       * 
+       * Insert new records for the 24 hours
+       * Check the guest database to see if they have been here before
+       * Abuse them?
+       * 
+       */
+      
+			$this->load->view('thanks');
+		}
+    
+		
 	}
+  public function password() 
+  {
+    
+  }
+  public function register() 
+  {
+    
+  }
 }
 
 /* End of file welcome.php */
