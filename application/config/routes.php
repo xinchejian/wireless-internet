@@ -64,8 +64,10 @@
 |
 */
 
-$route['default_controller'] = "welcome";
-$route['404_override'] = '';
+$route['default_controller'] = "wifi";
+$route['404_override'] = 'wifi';
+
+$route['extend'] = "wifi/extend";
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

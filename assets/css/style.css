@@ -1,0 +1,9 @@
+
+
+body, html { width: 500px; margin: 0 auto; margin-top: 50px; }
+#logo { width: 120px; height: 131px; float: left; background:url(/assets/images/logo.png); margin-right: 20px; }
+
+
+label { display: inline-block; width: 80px; text-align: right; margin: 5px;  }
+.buttons { text-align: right; }
+
