@@ -48,7 +48,7 @@ class Wifi extends CI_Controller {
     $this->load->library('user_agent');
 		$this->load->library('form_validation');
 
-    $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[32]|xss_clean|callback_username_check');
+    $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[32]|xss_clean|!matches[password]|callback_username_check');
     $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passconf]');
     $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required');
     $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
