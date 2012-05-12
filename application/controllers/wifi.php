@@ -92,7 +92,12 @@ class Wifi extends CI_Controller {
         'expiry' => date( 'Y-m-d H:i:s', strtotime("+1 day") )
       );
 
+      
+      var_dump($user);
+      
       $this->db->insert('users', $user); 
+      
+      
       $data['expires'] = $user['expiry'];
 			$this->load->view('thanks', $data);
 		}
