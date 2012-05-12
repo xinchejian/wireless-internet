@@ -42,14 +42,16 @@ class Wifi extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
+  var $username='';
+  
 	public function index()
 	{
     $this->load->helper(array('form', 'url'));
     $this->load->library('user_agent');
 		$this->load->library('form_validation');
 
-    $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[32]|xss_clean|!matches[password]|callback_username_check');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passconf]');
+    $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[32]|xss_clean|callback_username_check');
+    $this->form_validation->set_rules('password', 'Password', 'trim|required|matches[passconf]|callback_passwordtest');
     $this->form_validation->set_rules('passconf', 'Password Confirmation', 'trim|required');
     $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 
@@ -107,10 +109,19 @@ class Wifi extends CI_Controller {
     /* yes i know.. no encryption, PAP not workie correctly.. need more investigation */
     return $password;
   }
-
+  public function passwordtest($str)
+  {
+    if ($this->username != $str) {
+      
+      return TRUE;
+    } else {
+      $this->form_validation->set_message('passwordtest', 'your password matches your username.');
+      return FALSE;
+    }
+  }
   public function username_check($str)
 	{
-
+    $this->username = $str;
     $query = $this->db->select('id')->from('radcheck')->where('username', $str)->get();
 
     if ($query->num_rows() > 0) {
