@@ -9,9 +9,9 @@
   <body>
     <div id="logo"></div>
     <div>
+      <p><b>To get online, connect to XinCheJian1 or XinCheJian2 WiFi network and use the same username and password<b></p>
       <p>Your account expires: <?php echo $expires; ?></p>
-      <p>Remember, membership is only 100rmb, talk to a staff member to get signed up or to top up your account</p>
-      <p>To get online, jump to XinCheJian1 or XinCheJian2 WiFi network and use the same username and password</p>
+      <p>Remember: membership is only 100rmb, talk to a staff member to get signed up or to top up your account.</p>
     </div>
 
   </body>
