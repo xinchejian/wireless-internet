@@ -55,13 +55,13 @@ class Wifi extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-      if (stristr($this->agent->platform(), "Windows")) {
+      if ( stristr($this->agent->platform(), "Windows") ) {
         $data['windows'] ='<p style="color: red; font-color: #fff; ">Windows Users install this first! <a href="/assets/xinchejian.der">xinchejian.der</a></p>';
       } else {
         $data['windows'] =$this->agent->platform();
       }
       echo "fuclers";
-      var_dump($this->agent->platform());
+      var_dump(stristr($this->agent->platform(), "Windows"));
       echo "futters";
 			$this->load->view('landing', $data);
 		}
