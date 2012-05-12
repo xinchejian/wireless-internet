@@ -60,7 +60,7 @@ class Wifi extends CI_Controller {
       } else {
         $data['windows'] =$this->agent->platform();
       }
-      
+      var_dump($this->agent->platform());
 			$this->load->view('landing', $data);
 		}
 		else
