@@ -58,7 +58,7 @@ class Wifi extends CI_Controller {
       if ( stristr($this->agent->platform(), "Windows") ) {
         $data['windows'] ='<p style="color: red; text-decoration: blink; font-weight: bold;">Windows Users install this first! <a href="/assets/xinchejian.der">xinchejian.der</a></p>';
       } else {
-        $data['windows'] =$this->agent->platform();
+        $data['windows'] ='';
       }
 
 			$this->load->view('landing', $data);
