@@ -45,7 +45,7 @@ class Wifi extends CI_Controller {
 	public function index()
 	{
     $this->load->helper(array('form', 'url'));
-
+    $this->load->library('user_agent');
 		$this->load->library('form_validation');
 
     $this->form_validation->set_rules('username', 'Username', 'trim|required|min_length[3]|max_length[32]|xss_clean|callback_username_check');
@@ -55,7 +55,13 @@ class Wifi extends CI_Controller {
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('landing');
+      if ($this->agent->platform() == "Windows") {
+        $data['windows'] ='<p style="color: red; font-color: #fff; ">Windows Users install this first! <a href="/assets/xinchejian.der">xinchejian.der</a></p>';
+      } else {
+        $data['windows'] ='';
+      }
+      
+			$this->load->view('landing', $data);
 		}
 		else
 		{

@@ -12,7 +12,12 @@
     <div id="logo"></div>
     <?php echo form_open('/'); ?>
 
+    
+    
     <fieldset>
+    
+      <?php echo $windows; ?>
+      
       <legend>Guest</legend>
       <p><?php echo validation_errors(); ?></p>
 
