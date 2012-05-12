@@ -93,8 +93,6 @@ class Wifi extends CI_Controller {
       );
 
       
-      var_dump($user);
-      
       $this->db->insert('users', $user); 
       
       
